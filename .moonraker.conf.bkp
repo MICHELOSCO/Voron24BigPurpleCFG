@@ -13,6 +13,7 @@ cors_domains =
 	http://my.mainsail.xyz
 	http://*.local
 	http://*.lan
+	http://calilla.myddns.me
 trusted_clients = 
 	10.0.0.0/8
 	127.0.0.0/8
@@ -28,7 +29,7 @@ trusted_clients =
 
 [announcements]
 subscriptions = 
-	mainsail
+	octoeverywhere
 
 [update_manager]
 refresh_interval = 168
@@ -61,13 +62,6 @@ primary_branch = main
 managed_services = sonar
 install_script = tools/install.sh
 
-[update_manager client z_calibration]
-type = git_repo
-path = ~/klipper_z_calibration
-origin = https://github.com/protoloft/klipper_z_calibration.git
-install_script = install.sh
-managed_services = klipper
-
 [update_manager KlipperScreen]
 type = git_repo
 path = ~/KlipperScreen
@@ -92,4 +86,34 @@ path = ~/Klipper-Adaptive-Meshing-Purging
 origin = https://github.com/kyleisah/Klipper-Adaptive-Meshing-Purging.git
 managed_services = klipper
 primary_branch = main
+
+[update_manager mobileraker]
+type = git_repo
+path = /home/pi/mobileraker_companion
+origin = https://github.com/Clon1998/mobileraker_companion.git
+primary_branch = main
+managed_services = mobileraker
+env = /home/pi/mobileraker-env/bin/python
+requirements = scripts/mobileraker-requirements.txt
+install_script = scripts/install-mobileraker-companion.sh
+
+[update_manager Klippain-ShakeTune]
+type = git_repo
+path = ~/klippain_shaketune
+channel = beta
+origin = https://github.com/Frix-x/klippain-shaketune.git
+primary_branch = main
+managed_services = klipper
+install_script = install.sh
+
+[update_manager octoeverywhere]
+type = git_repo
+channel = beta
+path = /home/pi/octoeverywhere
+origin = https://github.com/QuinnDamerell/OctoPrint-OctoEverywhere.git
+env = /home/pi/octoeverywhere-env/bin/python
+requirements = requirements.txt
+install_script = install.sh
+managed_services = 
+	octoeverywhere
 
